@@ -1,0 +1,16 @@
+<launch>
+  <arg name="manual_and_spray" value="true"/>
+
+  <include file="$(find chefbot_bringup)/launch/urdf.launch" />
+
+ <node name="arduino_node" pkg="chefbot_bringup" type="arduino_node.py" output="screen">
+    <param name="port" value="/dev/ttyACM0" />
+    <param name="baudRate" value="115200" />
+ </node>
+
+ 	<!--manual & spray -->
+  <group if="$(eval manual_and_spray == true)">
+	 	<include file="$(find ps3_vel)/launch/ps3vel.launch" />	 	
+  </group>
+
+</launch>

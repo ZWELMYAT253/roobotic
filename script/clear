@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+while true; do
+	rosservice call /move_base/clear_costmaps "{}"
+	echo "clearing..."
+	sleep 3
+done
